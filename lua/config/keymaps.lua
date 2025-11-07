@@ -2,8 +2,15 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 --
+-- Delete any default LazyVim keymaps that I don't want or are interfering with other keymaps
+-- vim.keymap.del("n", "<leader>e") -- snacks.explorer keymap
+
+--
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
+
+-- why can't I set this in the nvim-tree plugin spec??
+-- keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- quickly clear search highlighting
 keymap("n", "<leader>n", ":noh<cr>", opts)

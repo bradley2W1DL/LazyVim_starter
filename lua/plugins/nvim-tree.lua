@@ -1,5 +1,7 @@
 return {
   "nvim-tree/nvim-tree.lua",
+  lazy = false,
+  priority = 55,
   opts = {
     respect_buf_cwd = false,
     sync_root_with_cwd = true,
@@ -30,6 +32,9 @@ return {
       },
     },
   },
+  -- keys = {
+  --   { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+  -- },
   init = function()
     -- disable devault nvim netrw file explorer
     vim.g.loaded_netrw = 1
