@@ -19,4 +19,4 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 ### Changes ported over from Omarchy nvim config
 
 - Fancy hot-reloading themes
-- ??? other stuff
+- ??? other stuff (tbh, at this point I'm too unfamiliar with lazyvim to know what omarchy changes.)
