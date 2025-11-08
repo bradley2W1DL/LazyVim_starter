@@ -1,6 +1,5 @@
 -- Snacks does a _lot_ explorers, pickers, etc.
 -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
--- <arbitrary change for submodule learning>
 return {
   "folke/snacks.nvim",
   opts = {
