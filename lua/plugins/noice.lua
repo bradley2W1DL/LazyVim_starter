@@ -7,6 +7,7 @@ return {
       format = {
         cmdline = { pattern = "^:", icon = "_", lang = "vim" },
       },
+      -- this is a change
     },
     presets = {
       bottom_search = true,
