@@ -9,14 +9,10 @@ return {
       end,
       desc = "Live Grep",
     },
-    {
-      "<leader>gb",
-    },
-  }, -- override some keymaps "<leader>gb"
+  },
   opts = {
-    scroll = {
-      enabled = false, -- Disable scrolling animations
-    },
+    scroll = { enabled = false }, -- Disable scrolling animations
+    indent = { enabled = false }, -- Disable indent guides by default
     -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
     picker = {
       layout = "telescope", -- default layout to be used
@@ -45,24 +41,31 @@ return {
       matcher = {
         frecency = true, -- give weight to more recently opened file
       },
+      win = {
+        input = {
+          keys = {
+            ["J"] = { "preview_scroll_down", mode = { "n" } }, -- TODO get this working.
+            ["K"] = { "preview_scroll_up", mode = { "n" } },
+            ["<M-q>"] = { "qflist", mode = { "i", "n" } },
+          },
+        },
+      },
       sources = {
-        -- git = false,
-        -- configures the file-tree (neo-tree)
         git_log = {
           layout = "git_dropdown",
+          on_show = function()
+            vim.cmd.stopinsert() -- start in normal-mode
+          end,
         },
         git_diff = {
           layout = "git_dropdown",
+          on_show = function()
+            vim.cmd.stopinsert()
+          end,
         },
+        gh_actions = false,
         explorer = {
           win = {
-            input = {
-              keys = {
-                ["J"] = { "preview_scroll_down", mode = { "n" } }, -- TODO get this working.
-                ["K"] = { "preview_scroll_up", mode = { "n" } },
-                ["<M-q>"] = { "qflist", mode = { "i", "n" } },
-              },
-            },
             list = {
               keys = {
                 ["o"] = "confirm", -- toggle dirs, open files
@@ -73,7 +76,7 @@ return {
         },
       },
     },
-    -- dashboard = {} -- replacement for separate alpha-vim conifg??
+    -- dashboard = {}
   },
 }
 
