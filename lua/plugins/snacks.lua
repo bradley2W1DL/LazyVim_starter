@@ -85,7 +85,8 @@ return {
           -- Render the Great Wave Off Kanagawa - Hokusai
           -- cmd = "chafa ~/.config/nvim/extras/kanagawa.jpg --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
           -- Live bonsai tree
-          cmd = "cbonsai -li -w 3.0 --leaf=&, --message=NEOVIM", -- TODO, get this to match the theme
+          -- cmd = "cbonsai -li -w 3.0 --leaf=&, --message=NEOVIM", -- TODO, get this to match the theme
+          cmd = "cbonsai -li",
           height = 17,
           padding = 1,
         },
