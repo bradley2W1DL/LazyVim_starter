@@ -9,9 +9,6 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- why can't I set this in the nvim-tree plugin spec??
--- keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- quickly clear search highlighting
 keymap("n", "<leader>n", ":noh<cr>", opts)
 
@@ -20,7 +17,7 @@ keymap("n", "x", '"_x', opts)
 keymap("n", "X", '"_X', opts)
 keymap("n", "<Del>", '"_x', opts)
 
--- Git Blame keymaps
+-- Git Blame keymaps -- OLD
 --  move these to the plugin spec "keys"
 -- keymap("n", "<leader>gb", ":GitBlameToggle<CR>", opts)
 -- keymap("n", "<leader>gy", ":GitBlameCopySHA<cr>", opts)

@@ -3,5 +3,4 @@
 -- Add any additional options here
 vim.opt.relativenumber = false
 vim.opt.backup = false
--- vim.opt.autosave = false
 vim.opt.cmdheight = 2
