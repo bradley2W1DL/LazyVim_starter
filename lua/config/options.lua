@@ -4,3 +4,4 @@
 vim.opt.relativenumber = false
 vim.opt.backup = false
 vim.opt.cmdheight = 2
+vim.opt.cursorline = false
