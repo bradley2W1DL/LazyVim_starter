@@ -50,14 +50,31 @@ return {
       end,
     },
     gh_actions = false,
+    -- NeoTree file explorer config
     explorer = {
       win = {
         list = {
           keys = {
             ["o"] = "confirm", -- toggle dirs, open files
             ["W"] = "explorer_close_all",
+            ["y"] = "yank_relative_cwd",
+            ["Y"] = "yank_relative_home",
           },
         },
+      },
+      actions = {
+        yank_relative_cwd = function(_, item)
+          local path = vim.fn.fnamemodify(item.file, ":.")
+          vim.fn.setreg("+", path)
+          vim.fn.setreg('"', path)
+          vim.notify("Yanked: " .. path)
+        end,
+        yank_relative_home = function(_, item)
+          local path = vim.fn.fnamemodify(item.file, ":~")
+          vim.fn.setreg("+", path)
+          vim.fn.setreg('"', path)
+          vim.notify("Yanked: " .. path)
+        end,
       },
     },
   },
