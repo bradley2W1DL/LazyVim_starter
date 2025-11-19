@@ -52,6 +52,11 @@ return {
     gh_actions = false,
     -- NeoTree file explorer config
     explorer = {
+      hidden = true,
+      ignored = true,
+      layout = {
+        auto_hide = { "input" },
+      },
       win = {
         list = {
           keys = {
@@ -59,6 +64,9 @@ return {
             ["W"] = "explorer_close_all",
             ["y"] = "yank_relative_cwd",
             ["Y"] = "yank_relative_home",
+            -- TODO, these keybinds not working...
+            -- ["K"] = "jump_to_first_relative_item",
+            -- ["J"] = "jump_to_last_relative_item",
           },
         },
       },
@@ -74,6 +82,25 @@ return {
           vim.fn.setreg("+", path)
           vim.fn.setreg('"', path)
           vim.notify("Yanked: " .. path)
+        end,
+        jump_to_first_relative_item = function(picker, item)
+          if not (picker.list and #picker.list > 0) or not item or not item.file then
+            return
+          end
+          local parent = vim.fn.fnamemodify(item.file, ":h")
+          for i = 1, #picker.list do
+            local it = picker.list[i]
+            if it and it.file and vim.fn.fnamemodify(it.file, ":h") == parent then
+              picker.list:_move(i)
+              return
+            end
+          end
+        end,
+        jump_to_last_relative_item = function(picker)
+          -- require("snacks.debug").inspect(picker)
+          if picker.list and #picker.list > 0 then
+            picker.list:_move(#picker.list, true, true)
+          end
         end,
       },
     },
