@@ -6,3 +6,5 @@ vim.opt.relativenumber = false
 vim.opt.backup = false
 vim.opt.cmdheight = 2
 vim.opt.cursorline = false
+vim.opt.list = false -- Disable showing invisible characters (tabs, trailing spaces, etc.)
+vim.opt.termguicolors = true

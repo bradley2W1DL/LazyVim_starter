@@ -17,11 +17,6 @@ keymap("n", "x", '"_x', opts)
 keymap("n", "X", '"_X', opts)
 keymap("n", "<Del>", '"_x', opts)
 
--- Git Blame keymaps -- OLD
---  move these to the plugin spec "keys"
--- keymap("n", "<leader>gb", ":GitBlameToggle<CR>", opts)
--- keymap("n", "<leader>gy", ":GitBlameCopySHA<cr>", opts)
-
 -- Normal --
 ------------
 -- Better window navigation
