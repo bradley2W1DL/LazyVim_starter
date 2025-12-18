@@ -25,7 +25,7 @@ return {
     },
   },
   matcher = {
-    frecency = true, -- give weight to more recently opened file
+    frecency = true, -- give weight to more recently opened files
   },
   win = {
     input = {
@@ -50,6 +50,44 @@ return {
       end,
     },
     gh_actions = false,
+    -- Buffer picker config with buffer deletion keybinds
+    -- TODO, NOT WORKING...
+    buffers = {
+      win = {
+        list = {
+          keys = {
+            ["<C-d>"] = { "buffer_delete", mode = { "n" } },
+            ["<C-x>"] = "buffer_delete_force",
+          },
+        },
+      },
+      actions = {
+        buffer_delete = function(picker, item)
+          if not item or not item.buf then
+            return
+          end
+          local bufnr = item.buf
+          -- Remove from picker list
+          picker:remove_item(item)
+          -- Delete the buffer (preserves window layout)
+          vim.schedule(function()
+            require("bufdelete").bufdelete(bufnr, false)
+          end)
+        end,
+        buffer_delete_force = function(picker, item)
+          if not item or not item.buf then
+            return
+          end
+          local bufnr = item.buf
+          -- Remove from picker list
+          picker:remove_item(item)
+          -- Force delete the buffer
+          vim.schedule(function()
+            require("bufdelete").bufdelete(bufnr, true)
+          end)
+        end,
+      },
+    },
     -- NeoTree file explorer config
     explorer = {
       hidden = true,

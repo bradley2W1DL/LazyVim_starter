@@ -5,6 +5,7 @@ return {
       "emmet-ls",
       "eslint-lsp",
       "typescript-language-server",
+      "protols",
     },
   },
 }
