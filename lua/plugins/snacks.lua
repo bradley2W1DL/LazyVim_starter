@@ -16,6 +16,7 @@ return {
     spelling = { enabled = false }, -- No spell checker by default
     picker = require("config.picker"),
     dashboard = require("config.dashboard"),
+    lazygit = {}, -- LazyGit with default config
   },
 }
 

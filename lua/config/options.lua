@@ -10,3 +10,4 @@ vim.opt.list = false -- Disable showing invisible characters (tabs, trailing spa
 vim.opt.termguicolors = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
+vim.opt.colorcolumn = "121"

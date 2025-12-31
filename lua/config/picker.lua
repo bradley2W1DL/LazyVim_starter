@@ -43,6 +43,12 @@ return {
         vim.cmd.stopinsert() -- start in normal-mode
       end,
     },
+    git_log_line = {
+      layout = "git_dropdown",
+      on_show = function()
+        vim.cmd.stopinsert() -- start in normal mode
+      end,
+    },
     git_diff = {
       layout = "git_dropdown",
       on_show = function()
