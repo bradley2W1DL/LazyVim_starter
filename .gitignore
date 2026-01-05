@@ -6,4 +6,7 @@ debug
 foo.*
 *.log
 data
+
+# Files symlinked by YADM
 lua/plugins/theme.lua
+plugins/after/transparency.lua
