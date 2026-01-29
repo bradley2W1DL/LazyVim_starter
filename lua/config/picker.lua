@@ -108,9 +108,8 @@ return {
             ["W"] = "explorer_close_all",
             ["y"] = "yank_relative_cwd",
             ["Y"] = "yank_relative_home",
-            -- TODO, these keybinds not working...
-            -- ["K"] = "jump_to_first_relative_item",
-            -- ["J"] = "jump_to_last_relative_item",
+            ["K"] = "jump_to_first_relative_item",
+            ["J"] = "jump_to_last_relative_item",
           },
         },
       },
@@ -128,22 +127,39 @@ return {
           vim.notify("Yanked: " .. path)
         end,
         jump_to_first_relative_item = function(picker, item)
-          if not (picker.list and #picker.list > 0) or not item or not item.file then
+          if not (picker.list and picker.list.items and #picker.list.items > 0) then
+            return
+          end
+          if not item or not item.file then
             return
           end
           local parent = vim.fn.fnamemodify(item.file, ":h")
-          for i = 1, #picker.list do
-            local it = picker.list[i]
+          for i = 1, #picker.list.items do
+            local it = picker.list.items[i]
             if it and it.file and vim.fn.fnamemodify(it.file, ":h") == parent then
-              picker.list:_move(i)
+              picker.list:_move(i, true, true)
               return
             end
           end
         end,
-        jump_to_last_relative_item = function(picker)
-          -- require("snacks.debug").inspect(picker)
-          if picker.list and #picker.list > 0 then
-            picker.list:_move(#picker.list, true, true)
+        jump_to_last_relative_item = function(picker, item)
+          if not (picker.list and picker.list.items and #picker.list.items > 0) then
+            return
+          end
+          if not item or not item.file then
+            return
+          end
+          local parent = vim.fn.fnamemodify(item.file, ":h")
+          local last_idx = nil
+          for i = #picker.list.items, 1, -1 do
+            local it = picker.list.items[i]
+            if it and it.file and vim.fn.fnamemodify(it.file, ":h") == parent then
+              last_idx = i
+              break
+            end
+          end
+          if last_idx then
+            picker.list:_move(last_idx, true, true)
           end
         end,
       },
