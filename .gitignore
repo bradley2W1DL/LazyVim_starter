@@ -9,4 +9,4 @@ data
 
 # Files symlinked by YADM
 lua/plugins/theme.lua
-plugins/after/transparency.lua
+plugin/after/transparency.lua
