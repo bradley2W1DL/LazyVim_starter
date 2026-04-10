@@ -11,3 +11,17 @@ vim.opt.termguicolors = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.colorcolumn = "121"
+
+-- Setting up buffer auth rate while I'm disabled
+-- We'll see if I like this enough to keep it once I have two hands back.
+vim.opt.autowrite = true
+vim.opt.updatetime = 3000
+
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
+  callback = function()
+    -- TODO, Maybe ignore certain files??
+    -- 'update' only saves if the buffer has been modified
+    vim.cmd("update")
+  end,
+})
