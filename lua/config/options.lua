@@ -20,8 +20,8 @@ vim.opt.updatetime = 3000
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
   callback = function()
-    -- TODO, Maybe ignore certain files??
-    -- 'update' only saves if the buffer has been modified
+    if vim.api.nvim_buf_get_name(0) == "" then return end
+    if vim.bo.buftype ~= "" then return end
     vim.cmd("update")
   end,
 })
