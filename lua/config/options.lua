@@ -20,8 +20,15 @@ vim.opt.updatetime = 3000
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
   callback = function()
-    if vim.api.nvim_buf_get_name(0) == "" then return end
-    if vim.bo.buftype ~= "" then return end
+    if vim.api.nvim_buf_get_name(0) == "" then
+      return
+    end
+    if vim.bo.buftype ~= "" then
+      return
+    end
     vim.cmd("update")
   end,
 })
+
+vim.opt.mousemodel = "extend" -- i.e. no popup menu
+vim.opt.mouse = "nv" -- only normal and visual modes
