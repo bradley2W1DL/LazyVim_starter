@@ -73,13 +73,7 @@ return {
       protols = {
         init_options = {
           include_paths = {
-            -- Root of current project
-            vim.fn.getcwd(),
-            vim.fs.root(0, 'protos'),
-            -- Common system path for Google well-known types
-            "/usr/local/include",
-            -- Any additional vendor directories
-            "vendor/protos",
+            vim.fs.joinpath(vim.fs.root(0, "buf.yaml") or vim.fn.getcwd(), "protos"),
           },
         },
       },
