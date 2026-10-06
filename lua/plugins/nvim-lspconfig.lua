@@ -77,6 +77,19 @@ return {
           },
         },
       },
+      pylsp = {
+        settings = {
+          pylsp = {
+            plugins = {
+              pycodestyle = {
+                enabled = true,
+                ignore = { "E501" },
+                maxLineLength = 120,
+              },
+            },
+          },
+        },
+      },
     },
   },
 }
